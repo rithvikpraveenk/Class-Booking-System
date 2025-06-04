@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Fitness Class</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f7f9fc;
+            padding: 40px;
+        }
+
+        h2 {
+            text-align: center;
+            color: #2c3e50;
+        }
+
+        form {
+            max-width: 500px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+        }
+
+        label {
+            font-weight: bold;
+            display: block;
+            margin-top: 15px;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+        }
+
+        button {
+            margin-top: 20px;
+            width: 100%;
+            padding: 12px;
+            background-color: #0077cc;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #005fa3;
+        }
+    </style>
+</head>
+<body>
+    <h2>Add Fitness Class</h2>
+    <form method="post">
+        {% csrf_token %}
+        <label for="name">Class Name:</label>
+        <input type="text" name="name" required>
+
+        <label for="datetime">Date and Time:</label>
+        <input type="datetime-local" name="datetime" required>
+
+        <label for="instructor">Instructor:</label>
+        <input type="text" name="instructor" required>
+
+        <label for="total_slots">Total Slots:</label>
+        <input type="number" name="total_slots" min="1" required>
+
+        <button type="submit">Add Class</button>
+    </form>
+</body>
+</html>

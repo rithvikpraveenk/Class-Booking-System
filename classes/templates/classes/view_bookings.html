@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Your Bookings</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f7f9fc;
+            padding: 40px;
+            color: #333;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #2c3e50;
+        }
+
+        form {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        input[type="email"] {
+            padding: 10px;
+            width: 300px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #0077cc;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #005fa3;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        li {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            padding: 20px;
+            margin-bottom: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03);
+        }
+
+        li strong {
+            color: #0077cc;
+        }
+
+        .empty-msg {
+            text-align: center;
+            font-style: italic;
+            color: #777;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Check Your Bookings</h2>
+
+    <form method="get">
+        <input type="email" name="email" placeholder="Enter your email" required value="{{ email }}">
+        <button type="submit">View Bookings</button>
+    </form>
+
+    {% if email %}
+        <h2>Bookings for {{ email }}</h2>
+
+        <ul>
+            {% for booking in bookings %}
+                <li>
+                    <strong>{{ booking.fitness_class.name }}</strong><br>
+                    Date & Time: {{ booking.fitness_class.datetime }}<br>
+                    Booked At: {{ booking.booked_at }}
+                </li>
+            {% empty %}
+                <li class="empty-msg">No bookings found.</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+</body>
+</html>

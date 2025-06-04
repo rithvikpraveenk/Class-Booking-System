@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Class Booking System - Home</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f4f8;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+        h1 {
+            color: #333;
+            margin-bottom: 40px;
+        }
+        .btn-container {
+            display: flex;
+            gap: 20px;
+        }
+        .btn {
+            padding: 15px 30px;
+            font-size: 16px;
+            background-color: #0066cc;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+        }
+        .btn:hover {
+            background-color: #004d99;
+        }
+    </style>
+</head>
+<body>
+    <h1>Welcome to the Class Booking System</h1>
+    <div class="btn-container">
+        <a href="{% url 'add_class' %}" class="btn">Add a Class</a>
+        <a href="{% url 'class_list' %}" class="btn">View Classes</a>
+        <a href="{% url 'book_class' %}" class="btn">Book a Class</a>
+        <a href="{% url 'view_bookings' %}" class="btn">My Bookings</a>
+    </div>
+</body>
+</html>

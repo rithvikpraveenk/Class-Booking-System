@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Upcoming Fitness Classes</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f9fafc;
+            margin: 0;
+            padding: 40px;
+            color: #333;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #2c3e50;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+            max-width: 600px;
+            margin: 0 auto 40px auto;
+        }
+
+        li {
+            background-color: #ffffff;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 15px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+
+        li:hover {
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
+        }
+
+        .book-btn {
+            display: block;
+            width: 200px;
+            margin: 0 auto;
+            padding: 12px 0;
+            text-align: center;
+            background-color: #0077cc;
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 8px;
+            transition: background-color 0.3s ease;
+        }
+
+        .book-btn:hover {
+            background-color: #005fa3;
+        }
+    </style>
+</head>
+<body>
+    <h1>Upcoming Fitness Classes</h1>
+    <ul>
+        {% for cls in classes %}
+        <li>
+            <strong>{{ cls.name }}</strong> with <em>{{ cls.instructor }}</em><br>
+            Date & Time: {{ cls.datetime }}<br>
+            Available Slots: {{ cls.available_slots }}
+        </li>
+        {% empty %}
+        <li>No upcoming classes available at the moment.</li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'book_class' %}" class="book-btn">Book a Class</a>
+</body>
+</html>
+
